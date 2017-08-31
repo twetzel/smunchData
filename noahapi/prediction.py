@@ -15,7 +15,7 @@ import datetime as dt
 def get_connection():
 	try:
 		connection = psycopg2.connect(
-			"dbname='smunch_development_pricing' user='nschumacher' host='localhost' password='12' port='5432'")
+			"dbname='smunch_development' user='austin' host='postgres' password='behaveATdocker' port='5432'")
 			#"dbname='smunch_db' user='smunch_db_user' host='176.28.16.137' password='vaiv4caCs6ek1Ak0Bog7uG9Ev6ra' port='5432'")
 		connection.autocommit = True
 		cursor = connection.cursor()

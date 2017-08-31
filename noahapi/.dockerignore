@@ -1,0 +1,21 @@
+.dockerignore
+
+# Ignore Git folder
+.git/
+
+# Ignore PyCache folder
+__pycache__/
+
+
+# Leave foo folder but ignore its content
+.foo/*
+
+# Ignore all .swp files
+**/*.swp
+
+# Ignore all .md files, but keep README.md
+**/*.txt
+
+# Ignore all .md files, but keep README.md
+**/*.md
+!README.md

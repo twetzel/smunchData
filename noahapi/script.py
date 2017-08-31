@@ -46,6 +46,7 @@ class KodeFunHTTPRequestHandler(BaseHTTPRequestHandler):
 		start = dt.datetime.now()
 		self.send_response(200)
 		self.send_header('Content-type','text-html')
+		self.send_header('Access-Control-Allow-Origin','*')
 		self.end_headers()
 		
 		if self.path == "/favicon.ico":
@@ -85,7 +86,14 @@ class KodeFunHTTPRequestHandler(BaseHTTPRequestHandler):
 		for i in total_per_company:
 			print("result:", i)
 			rID_total_orders[i['rID']] += i['prediction']
+			# self.wfile.write(bytes(str(i), "utf-8"))
 		print("\nRestaurant Aggregated:", rID_total_orders, "\n")
+		print("\n\n\n ######### \n\n\n")
+		self.wfile.write(bytes(str("{'per_company': "), "utf-8"))
+		self.wfile.write(bytes(str(total_per_company), "utf-8"))
+		self.wfile.write(bytes(str(",'per_restaurant': "), "utf-8"))
+		self.wfile.write(bytes(str(rID_total_orders), "utf-8"))
+		self.wfile.write(bytes(str("}"), "utf-8"))
 
 		'''self.wfile.write(
 			bytes((rID_total_orders), "utf-8"))'''
@@ -142,6 +150,5 @@ cID=194&rID=3&cOR=13&year=2017&mon=8&day=23&
 cID=85&rID=1&cOR=13&year=2017&mon=8&day=23&
 
 cID=117&rID=3&cOR=14&year=2017&mon=8&day=23&cID=248&rID=1&cOR=8&year=2017&mon=8&day=23&cID=288&rID=3&cOR=3&year=2017&mon=8&day=23&cID=90&rID=1&cOR=8&year=2017&mon=8&day=23&cID=263&rID=3&cOR=6&year=2017&mon=8&day=23&cID=132&rID=1&cOR=4&year=2017&mon=8&day=23&cID=9&rID=1&cOR=14&year=2017&mon=8&day=23&cID=194&rID=3&cOR=12&year=2017&mon=8&day=23&cID=85&rID=1&cOR=16&year=2017&mon=8&day=23
-
 '''
 
